@@ -1,6 +1,6 @@
 {
   "name": "ywemay-api-test",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "API test helper functions",
   "main": "index.js",
   "directories": {
