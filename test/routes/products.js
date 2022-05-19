@@ -8,6 +8,9 @@ router.get('/', function (req, res) {
 
 router.get('/:id', function (req, res) {
   const id = req.params.id;
+  if (req.params.id !== 'A12') {
+    return res.status(401).send({});
+  }
   res.status(200).send({id});
 })
 
