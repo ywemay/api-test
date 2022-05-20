@@ -1,20 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const jwt = require('jsonwebtoken');
-
-const { JWT_KEY } = process.env;
-const TOKEN_OPTIONS = {
-  expiresIn: '1h'
-}
-
-function getAuthData(user) {
-  const { _id, roles, username, language } = user;
-  const payload = { uid: _id, roles }
-  return {
-    token: jwt.sign(payload, JWT_KEY, TOKEN_OPTIONS),
-    user
-  };
-}
+const getAuthData = require('../auth-data');
 
 const mockLogIn = (req, res) => {
   const { username, password } = req.body;

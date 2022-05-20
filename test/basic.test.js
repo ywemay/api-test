@@ -1,5 +1,6 @@
 const apiTest = require('../index')
 server = require('./server')
+const getAuthData = require('./auth-data')
 
 const test = apiTest({
   server
@@ -15,12 +16,18 @@ const fakeUser = {
   password: 'password'
 }
 
+const { token } = getAuthData({_id: '1234', roles: ['admin']});
+
 describe('Basic test', function () {
+
+  const uri = '/products';
 
   test.list('it should get products', {
     credentials: adminUser,
     uri: '/products'
   })
+
+  test.list('it should get products using token', { token, uri })
   
   test.put('it should get product', {
     credentials: adminUser,
